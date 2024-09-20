@@ -6,21 +6,30 @@
 const tintColorLight = '#0a7ea4';
 const tintColorDark = '#fff';
 
-export const Colors = {
-  light: {
-    text: '#11181C',
-    background: '#fff',
-    tint: tintColorLight,
-    icon: '#687076',
-    tabIconDefault: '#687076',
-    tabIconSelected: tintColorLight,
-  },
-  dark: {
-    text: '#ECEDEE',
-    background: '#151718',
-    tint: tintColorDark,
-    icon: '#9BA1A6',
-    tabIconDefault: '#9BA1A6',
-    tabIconSelected: tintColorDark,
-  },
+export const colorCategory = [
+  { id: 'red', title: 'Red', color: '#FF0000' },
+  { id: 'blue', title: 'Blue', color: '#0000FF' },
+  { id: 'green', title: 'Green', color: '#00FF00' },
+  { id: 'yellow', title: 'Yellow', color: '#FFFF00' },
+];
+
+export const colorData = {
+  red: [
+    { id: 1, title: 'Tomato', image: require('../assets/app/images/dog.jpg'), audio: require('../assets/app/audio/dog.mp3') },
+    { id: 2, title: 'Ketchup', image: require('../assets/app/images/dog.jpg'), audio: require('../assets/app/audio/dog.mp3') },
+    { id: 3, title: 'Apple', image: require('../assets/app/images/cat.jpg'), audio: require('../assets/app/audio/cat.mp3') },
+  ],
+  blue: [
+    { id: 1, title: 'Water', image: require('../assets/app/images/cat.jpg'), audio: require('../assets/app/audio/dog.mp3') },
+    { id: 2, title: 'Ice', image: require('../assets/app/images/cat.jpg'), audio: require('../assets/app/audio/cat.mp3') },
+    { id: 3, title: 'Sky', image: require('../assets/app/images/cat.jpg'), audio: require('../assets/app/audio/cat.mp3') },
+  ],
+  green: [
+    { id: 1, title: 'Grass', image: require('../assets/app/images/cat.jpg'), audio: require('../assets/app/audio/dog.mp3') },
+    { id: 2, title: 'Leaf', image: require('../assets/app/images/dog.jpg'), audio: require('../assets/app/audio/dog.mp3') },
+  ],
+  yellow: [
+    { id: 1, title: 'Sun', image: require('../assets/app/images/cat.jpg'), audio: require('../assets/app/audio/cat.mp3') },
+    { id: 2, title: 'Banana', image: require('../assets/app/images/dog.jpg'), audio: require('../assets/app/audio/dog.mp3') },
+  ],
 };
