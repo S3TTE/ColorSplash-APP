@@ -3,8 +3,7 @@ import { View, Image, TouchableOpacity, StyleSheet, Text, Dimensions, FlatList, 
 import { useLocalSearchParams, Link } from 'expo-router';
 import { Audio } from 'expo-av';
 import Fireworks from '../../components/Firework';
-import { colorCategory, colorData, colorCategoryTranslations } from '../../constants/Colors';
-import { translations, getAudioFile } from '../../constants/LanguageData';
+import { translations, getTranslation, getAudioFile } from '../../constants/LanguageData';
 
 const { width: screenWidth, height: screenHeight } = Dimensions.get('window');
 
@@ -16,18 +15,36 @@ export default function CategoryPage() {
   const [currentPage, setCurrentPage] = useState(0);
   const animatedValue = useRef(new Animated.Value(0)).current;
   const opacityValue = useRef(new Animated.Value(0)).current;
+  
+  const animatedStyles = {
+    width: animatedValue.interpolate({
+      inputRange: [0, 1],
+      outputRange: [screenWidth * 0.4, screenWidth * 0.8],
+    }),
+    height: animatedValue.interpolate({
+      inputRange: [0, 1],
+      outputRange: [screenWidth * 0.4, screenHeight * 0.4],
+    }),
+    opacity: opacityValue,
+  };
 
-  const playSound = async (audio) => {
+  const playSound = async (itemKey) => {
     try {
-      console.log("Attempting to play audio:", audio);
+      console.log("Attempting to play audio");
       
       if (sound) {
         console.log("Unloading previous sound");
         await sound.unloadAsync();
       }
       
+      const audioFile = getAudioFile(id, itemKey);
+      if (!audioFile) {
+        console.warn(`Audio file not found for language ${id} and item ${itemKey}`);
+        return;
+      }
+      
       console.log("Creating new sound");
-      const { sound: newSound } = await Audio.Sound.createAsync(audio);
+      const { sound: newSound } = await Audio.Sound.createAsync(audioFile);
       setSound(newSound);
       
       console.log("Playing sound");
@@ -50,11 +67,8 @@ export default function CategoryPage() {
   const handleItemPress = (item) => {
     setSelectedItem(item);
     setShowFireworks(true);
-    console.log(id, item)
-    const audioFile = getAudioFile(id, item.key);
-    if (audioFile) {
-      playSound(audioFile);
-    }
+    console.log(id, item);
+    playSound(item.key);
 
     Animated.parallel([
       Animated.timing(animatedValue, {
@@ -89,8 +103,11 @@ export default function CategoryPage() {
   };
 
   const renderColorCategory = (color) => {
-    const categoryData = colorData[color] || [];
-    const categoryName = colorCategoryTranslations[id][color];
+    const categoryData = translations[id].items.filter(item => 
+      // You might want to add a 'color' property to items or use a mapping to determine which color an item belongs to
+      true // For now, we're showing all items in each category
+    );
+    const categoryName = translations[id].colors.find(c => c.key === color)?.title;
 
     return (
       <View style={[styles.categoryContainer, { width: screenWidth }]} key={color}>
@@ -102,11 +119,11 @@ export default function CategoryPage() {
               style={styles.itemContainer}
               onPress={() => handleItemPress(item)}
             >
-              <Image source={item.image} style={styles.image} />
-              <Text style={styles.itemTitle}>{translations[id]?.[item.id] || item.title}</Text>
+              <Image source={require('../../assets/app/images/dog.jpg')} style={styles.image} />
+              <Text style={styles.itemTitle}>{item.title}</Text>
             </TouchableOpacity>
           )}
-          keyExtractor={(item) => item.id.toString()}
+          keyExtractor={(item) => item.key}
           numColumns={2}
           contentContainerStyle={styles.listContent}
         />
@@ -114,22 +131,10 @@ export default function CategoryPage() {
     );
   };
 
-  const animatedStyles = {
-    width: animatedValue.interpolate({
-      inputRange: [0, 1],
-      outputRange: [screenWidth * 0.4, screenWidth * 0.8],
-    }),
-    height: animatedValue.interpolate({
-      inputRange: [0, 1],
-      outputRange: [screenWidth * 0.4, screenHeight * 0.4],
-    }),
-    opacity: opacityValue,
-  };
-
   return (
     <SafeAreaView style={styles.container}>
       <Link href="/" style={styles.backButton}>
-        <Text style={styles.backButtonText}>{translations[id].backToLanguageSelection}</Text>
+        <Text style={styles.backButtonText}>{getTranslation(id, 'functionality.backToLanguageSelection')}</Text>
       </Link>
       <ScrollView
         horizontal
@@ -142,15 +147,15 @@ export default function CategoryPage() {
         }}
         scrollEventThrottle={16}
       >
-        {colorCategory.map(category => renderColorCategory(category.id))}
+        {translations[id].colors.map(category => renderColorCategory(category.key))}
       </ScrollView>
       <View style={styles.pagination}>
-        {colorCategory.map((category, index) => (
+        {translations[id].colors.map((category, index) => (
           <View
             key={index}
             style={[
               styles.paginationDot,
-              { backgroundColor: category.color },
+              { backgroundColor: category.key },
               currentPage === index && styles.paginationDotActive,
             ]}
           />
@@ -158,7 +163,7 @@ export default function CategoryPage() {
       </View>
       {selectedItem && (
         <Animated.View style={[styles.enlargedImageContainer, animatedStyles]}>
-          <Image source={selectedItem.image} style={styles.enlargedImage} />
+          <Image source={require('../../assets/app/images/dog.jpg')} style={styles.enlargedImage} />
         </Animated.View>
       )}
       {showFireworks && (
@@ -166,7 +171,7 @@ export default function CategoryPage() {
           <Fireworks
             speed={3}
             density={8}
-            colors={colorCategory.map(cat => cat.color)}
+            colors={translations[id].colors.map(cat => cat.key)}
             iterations={5}
             height={screenHeight}
             width={screenWidth}

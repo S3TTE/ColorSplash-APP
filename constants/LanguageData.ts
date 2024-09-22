@@ -1,7 +1,5 @@
 // constants/LanguageData.ts
 
-import { colorCategory } from './Colors';
-
 export const supportedLanguages = ['en', 'it', 'de', 'es'];
 
 export const languageNames = {
@@ -11,81 +9,92 @@ export const languageNames = {
   es: 'Español',
 };
 
-// Function to dynamically generate audio file paths
-export const getAudioFile = (lang: string, itemId: string) => {
-  try {
-    console.log(`../assets/app/audio/${lang}/${itemId}.mp3`);
-    //return require(`../assets/app/audio/${lang}/${itemId}.mp3`);
-    return require(`../assets/app/audio/it/tomato.mp3`);
-  } catch (error) {
-    console.warn(`Audio file not found for language ${lang} and item ${itemId}`);
-    return null;
-  }
-};
-
 export const translations = {
   en: {
-    backToLanguageSelection: 'Back to Language Selection',
-    colorCategories: 'Color Categories',
-    red: 'Red',
-    blue: 'Blue',
-    green: 'Green',
-    yellow: 'Yellow',
-    tomato: 'Tomato',
-    apple: 'Apple',
-    water: 'Water',
-    sky: 'Sky',
-    grass: 'Grass',
-    leaf: 'Leaf',
-    sun: 'Sun',
-    banana: 'Banana',
+    functionality: {
+      backToLanguageSelection: 'Back to Language Selection',
+      colorCategories: 'Color Categories',
+    },
+    colors: [
+      {key: "red", title: 'Red'},
+      {key: "blue", title: 'Blue'},
+      {key: "green", title: 'Green'},
+      {key: "yellow", title: 'Yellow'},
+    ],
+    items: [
+      { key: "tomato", title: 'Tomato', audioFile: require('../assets/app/audio/en/tomato.mp3')},
+      { key: "apple", title: 'Apple', audioFile: require('../assets/app/audio/en/apple.mp3')},
+      { key: "water", title: 'Water', audioFile: require('../assets/app/audio/en/water.mp3')},
+    ],
   },
   it: {
-    backToLanguageSelection: 'Back to Language Selection',
-    colorCategories: 'Color Categories',
-    red: 'Rosso',
-    blue: 'Blue',
-    green: 'Green',
-    yellow: 'Yellow',
-    tomato: 'Pomodoro',
-    apple: 'Apple',
-    water: 'Water',
-    sky: 'Sky',
-    grass: 'Grass',
-    leaf: 'Leaf',
-    sun: 'Sun',
-    banana: 'Banana',
+    functionality: {
+      backToLanguageSelection: 'Torna alla selezione della lingua',
+      colorCategories: 'Categorie di colori',
+    },
+    colors: [
+      {key: "red", title: 'Rosso'},
+      {key: "blue", title: 'Blu'},
+      {key: "green", title: 'Verde'},
+      {key: "yellow", title: 'Giallo'},
+    ],
+    items: [
+      { key: "tomato", title: 'Pomodoro', audioFile: require('../assets/app/audio/it/tomato.mp3')},
+      { key: "apple", title: 'Mela', audioFile: require('../assets/app/audio/it/apple.mp3')},
+      { key: "water", title: 'Acqua', audioFile: require('../assets/app/audio/it/water.mp3')},
+    ],
   },
   de: {
-    backToLanguageSelection: 'Back to Language Selection',
-    colorCategories: 'Color Categories',
-    red: 'Red',
-    blue: 'Blue',
-    green: 'Green',
-    yellow: 'Yellow',
-    tomato: 'Tomato',
-    apple: 'Apple',
-    water: 'Water',
-    sky: 'Sky',
-    grass: 'Grass',
-    leaf: 'Leaf',
-    sun: 'Sun',
-    banana: 'Banana',
+    functionality: {
+      backToLanguageSelection: 'Torna alla selezione della lingua',
+      colorCategories: 'Categorie di colori',
+    },
+    colors: [
+      {key: "red", title: 'Rosso'},
+      {key: "blue", title: 'Blu'},
+      {key: "green", title: 'Verde'},
+      {key: "yellow", title: 'Giallo'},
+    ],
+    items: [
+      { key: "tomato", title: 'Pomodoro', audioFile: require('../assets/app/audio/it/tomato.mp3')},
+      { key: "apple", title: 'Mela', audioFile: require('../assets/app/audio/it/apple.mp3')},
+      { key: "water", title: 'Acqua', audioFile: require('../assets/app/audio/it/water.mp3')},
+    ],
   },
   es: {
-    backToLanguageSelection: 'Back to Language Selection',
-    colorCategories: 'Color Categories',
-    red: 'Red',
-    blue: 'Blue',
-    green: 'Green',
-    yellow: 'Yellow',
-    tomato: 'Tomato',
-    apple: 'Apple',
-    water: 'Water',
-    sky: 'Sky',
-    grass: 'Grass',
-    leaf: 'Leaf',
-    sun: 'Sun',
-    banana: 'Banana',
+    functionality: {
+      backToLanguageSelection: 'Torna alla selezione della lingua',
+      colorCategories: 'Categorie di colori',
+    },
+    colors: [
+      {key: "red", title: 'Rosso'},
+      {key: "blue", title: 'Blu'},
+      {key: "green", title: 'Verde'},
+      {key: "yellow", title: 'Giallo'},
+    ],
+    items: [
+      { key: "tomato", title: 'Pomodoro', audioFile: require('../assets/app/audio/it/tomato.mp3')},
+      { key: "apple", title: 'Mela', audioFile: require('../assets/app/audio/it/apple.mp3')},
+      { key: "water", title: 'Acqua', audioFile: require('../assets/app/audio/it/water.mp3')},
+    ],
   },
+  // Add similar structures for 'de' and 'es'
+};
+
+export const getTranslation = (lang: string, key: string): string => {
+  const keys = key.split('.');
+  let result = translations[lang];
+  for (const k of keys) {
+    if (result && typeof result === 'object' && k in result) {
+      result = result[k];
+    } else {
+      return key; // Return the key if translation is not found
+    }
+  }
+  return typeof result === 'string' ? result : key;
+};
+
+export const getAudioFile = (lang: string, itemKey: string) => {
+  const item = translations[lang]?.items.find(item => item.key === itemKey);
+  return item ? item.audioFile : null;
 };
