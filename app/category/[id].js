@@ -1,28 +1,42 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { View, Image, TouchableOpacity, StyleSheet, Text, Dimensions, FlatList, ScrollView, SafeAreaView, Animated } from 'react-native';
-import { useLocalSearchParams } from 'expo-router';
+import { useLocalSearchParams, Link } from 'expo-router';
 import { Audio } from 'expo-av';
-import Fireworks from '../../components/Firework'
-import { colorData } from '../../constants/Colors'
+import Fireworks from '../../components/Firework';
+import { colorCategory, colorData, colorCategoryTranslations } from '../../constants/Colors';
+import { translations, getAudioFile } from '../../constants/LanguageData';
 
 const { width: screenWidth, height: screenHeight } = Dimensions.get('window');
 
 export default function CategoryPage() {
   const { id } = useLocalSearchParams();
   const [sound, setSound] = useState();
-  const [currentPage, setCurrentPage] = useState(0);
   const [selectedItem, setSelectedItem] = useState(null);
   const [showFireworks, setShowFireworks] = useState(false);
+  const [currentPage, setCurrentPage] = useState(0);
   const animatedValue = useRef(new Animated.Value(0)).current;
   const opacityValue = useRef(new Animated.Value(0)).current;
 
   const playSound = async (audio) => {
-    if (sound) {
-      await sound.unloadAsync();
+    try {
+      console.log("Attempting to play audio:", audio);
+      
+      if (sound) {
+        console.log("Unloading previous sound");
+        await sound.unloadAsync();
+      }
+      
+      console.log("Creating new sound");
+      const { sound: newSound } = await Audio.Sound.createAsync(audio);
+      setSound(newSound);
+      
+      console.log("Playing sound");
+      await newSound.playAsync();
+      
+      console.log("Sound played successfully");
+    } catch (error) {
+      console.error("Error playing sound:", error);
     }
-    const { sound: newSound } = await Audio.Sound.createAsync(audio);
-    setSound(newSound);
-    await newSound.playAsync();
   };
 
   useEffect(() => {
@@ -36,7 +50,11 @@ export default function CategoryPage() {
   const handleItemPress = (item) => {
     setSelectedItem(item);
     setShowFireworks(true);
-    playSound(item.audio);
+    console.log(id, item)
+    const audioFile = getAudioFile(id, item.key);
+    if (audioFile) {
+      playSound(audioFile);
+    }
 
     Animated.parallel([
       Animated.timing(animatedValue, {
@@ -66,16 +84,17 @@ export default function CategoryPage() {
           setSelectedItem(null);
           setShowFireworks(false);
         });
-      }, 3000); // Increased from 2000 to 3000 for longer fireworks display
+      }, 3000);
     });
   };
 
   const renderColorCategory = (color) => {
     const categoryData = colorData[color] || [];
+    const categoryName = colorCategoryTranslations[id][color];
 
     return (
       <View style={[styles.categoryContainer, { width: screenWidth }]} key={color}>
-        <Text style={styles.title}>{color.charAt(0).toUpperCase() + color.slice(1)} Items</Text>
+        <Text style={styles.title}>{categoryName}</Text>
         <FlatList
           data={categoryData}
           renderItem={({ item }) => (
@@ -84,7 +103,7 @@ export default function CategoryPage() {
               onPress={() => handleItemPress(item)}
             >
               <Image source={item.image} style={styles.image} />
-              <Text style={styles.itemTitle}>{item.title}</Text>
+              <Text style={styles.itemTitle}>{translations[id]?.[item.id] || item.title}</Text>
             </TouchableOpacity>
           )}
           keyExtractor={(item) => item.id.toString()}
@@ -109,6 +128,9 @@ export default function CategoryPage() {
 
   return (
     <SafeAreaView style={styles.container}>
+      <Link href="/" style={styles.backButton}>
+        <Text style={styles.backButtonText}>{translations[id].backToLanguageSelection}</Text>
+      </Link>
       <ScrollView
         horizontal
         pagingEnabled
@@ -120,15 +142,15 @@ export default function CategoryPage() {
         }}
         scrollEventThrottle={16}
       >
-        {Object.keys(colorData).map(renderColorCategory)}
+        {colorCategory.map(category => renderColorCategory(category.id))}
       </ScrollView>
       <View style={styles.pagination}>
-        {Object.keys(colorData).map((color, index) => (
+        {colorCategory.map((category, index) => (
           <View
             key={index}
             style={[
               styles.paginationDot,
-              { backgroundColor: color },
+              { backgroundColor: category.color },
               currentPage === index && styles.paginationDotActive,
             ]}
           />
@@ -144,7 +166,7 @@ export default function CategoryPage() {
           <Fireworks
             speed={3}
             density={8}
-            colors={Object.keys(colorData)[currentPage]}
+            colors={colorCategory.map(cat => cat.color)}
             iterations={5}
             height={screenHeight}
             width={screenWidth}
@@ -162,10 +184,17 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#f0f0f0',
   },
+  backButton: {
+    padding: 10,
+    marginBottom: 10,
+  },
+  backButtonText: {
+    color: '#0a7ea4',
+    fontSize: 16,
+  },
   categoryContainer: {
     flex: 1,
     padding: 20,
-    backgroundColor: '#f0f0f0',
   },
   title: {
     fontSize: 24,
@@ -187,6 +216,11 @@ const styles = StyleSheet.create({
     resizeMode: 'cover',
     borderRadius: 10,
   },
+  itemTitle: {
+    marginTop: 10,
+    fontSize: 16,
+    textAlign: 'center',
+  },
   enlargedImageContainer: {
     position: 'absolute',
     top: screenHeight / 2 - screenWidth * 0.2,
@@ -200,11 +234,6 @@ const styles = StyleSheet.create({
     height: '100%',
     resizeMode: 'cover',
   },
-  itemTitle: {
-    marginTop: 10,
-    fontSize: 16,
-    textAlign: 'center',
-  },
   pagination: {
     flexDirection: 'row',
     justifyContent: 'center',
@@ -217,14 +246,10 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     marginHorizontal: 4,
     opacity: 0.6,
-    borderWidth: 0.5,
-    borderColor: 'black',
   },
   paginationDotActive: {
     opacity: 1,
     transform: [{ scale: 1.3 }],
-    //borderWidth: 2,
-    //borderColor: 'white',
   },
   fireworksContainer: {
     ...StyleSheet.absoluteFillObject,

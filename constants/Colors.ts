@@ -13,23 +13,51 @@ export const colorCategory = [
   { id: 'yellow', title: 'Yellow', color: '#FFFF00' },
 ];
 
+// Add translations for color categories
+export const colorCategoryTranslations = {
+  en: {
+    red: 'Red',
+    blue: 'Blue',
+    green: 'Green',
+    yellow: 'Yellow'
+  },
+  it: {
+    red: 'Rosso',
+    blue: 'Blu',
+    green: 'Verde',
+    yellow: 'Giallo'
+  },
+  de: {
+    red: 'Rot',
+    blue: 'Blau',
+    green: 'Grün',
+    yellow: 'Gelb'
+  },
+  es: {
+    red: 'Rojo',
+    blue: 'Azul',
+    green: 'Verde',
+    yellow: 'Amarillo'
+  }
+};
+
 export const colorData = {
   red: [
-    { id: 1, title: 'Tomato', image: require('../assets/app/images/dog.jpg'), audio: require('../assets/app/audio/dog.mp3') },
-    { id: 2, title: 'Ketchup', image: require('../assets/app/images/dog.jpg'), audio: require('../assets/app/audio/dog.mp3') },
-    { id: 3, title: 'Apple', image: require('../assets/app/images/cat.jpg'), audio: require('../assets/app/audio/cat.mp3') },
+    { id: 1, title: 'Tomato', image: require('../assets/app/images/dog.jpg'), key: "tomato"},
+    { id: 2, title: 'Ketchup', image: require('../assets/app/images/dog.jpg'), key: "tomato"},
+    { id: 3, title: 'Apple', image: require('../assets/app/images/cat.jpg'), key: "tomato"},
   ],
   blue: [
-    { id: 1, title: 'Water', image: require('../assets/app/images/cat.jpg'), audio: require('../assets/app/audio/dog.mp3') },
-    { id: 2, title: 'Ice', image: require('../assets/app/images/cat.jpg'), audio: require('../assets/app/audio/cat.mp3') },
-    { id: 3, title: 'Sky', image: require('../assets/app/images/cat.jpg'), audio: require('../assets/app/audio/cat.mp3') },
+    { id: 1, title: 'Water', image: require('../assets/app/images/cat.jpg'), key: "tomato"},
+    { id: 2, title: 'Ice', image: require('../assets/app/images/cat.jpg'), key: "tomato"},
+    { id: 3, title: 'Sky', image: require('../assets/app/images/cat.jpg'), key: "tomato"},
   ],
   green: [
-    { id: 1, title: 'Grass', image: require('../assets/app/images/cat.jpg'), audio: require('../assets/app/audio/dog.mp3') },
-    { id: 2, title: 'Leaf', image: require('../assets/app/images/dog.jpg'), audio: require('../assets/app/audio/dog.mp3') },
+    { id: 1, title: 'Grass', image: require('../assets/app/images/cat.jpg'), key: "tomato"},
+    { id: 2, title: 'Leaf', image: require('../assets/app/images/dog.jpg'), key: "tomato"},
   ],
   yellow: [
-    { id: 1, title: 'Sun', image: require('../assets/app/images/cat.jpg'), audio: require('../assets/app/audio/cat.mp3') },
-    { id: 2, title: 'Banana', image: require('../assets/app/images/dog.jpg'), audio: require('../assets/app/audio/dog.mp3') },
+    { id: 1, title: 'Sun', image: require('../assets/app/images/cat.jpg'), key: "tomato"},
+    { id: 2, title: 'Banana', image: require('../assets/app/images/dog.jpg'), key: "tomato"},
   ],
 };

@@ -1,28 +1,23 @@
 import React from 'react';
-import { View, Text, StyleSheet, Dimensions, TouchableOpacity, SafeAreaView } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, SafeAreaView } from 'react-native';
 import { Link } from 'expo-router';
-import { colorCategory } from '../constants/Colors'
 
-const categories = [
-  { id: 'red', title: 'Red', color: '#FF0000' },
-  { id: 'blue', title: 'Blue', color: '#0000FF' },
-  { id: 'green', title: 'Green', color: '#00FF00' },
-  { id: 'yellow', title: 'Yellow', color: '#FFFF00' },
+const languages = [
+  { id: 'en', title: 'English' },
+  { id: 'it', title: 'Italiano' },
+  { id: 'de', title: 'Deutsch' },
+  { id: 'es', title: 'Español' },
 ];
 
-const { width: screenWidth, height: screenHeight } = Dimensions.get('window');
-
-export default function Home() {
+export default function LanguageSelection() {
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.title}>Color Categories</Text>
-      <Text style={styles.debug}>Screen Width: {screenWidth}</Text>
-      <Text style={styles.debug}>Screen Height: {screenHeight}</Text>
-      <View style={styles.categoriesContainer}>
-        {colorCategory.map((item) => (
-          <Link key={item.id} href={`/category/${item.id}`} asChild>
-            <TouchableOpacity style={[styles.categoryButton, { backgroundColor: item.color }]}>
-              <Text style={styles.categoryText}>{item.title}</Text>
+      <Text style={styles.title}>Select Language / Seleziona la lingua / Sprache wählen / Seleccionar idioma</Text>
+      <View style={styles.languagesContainer}>
+        {languages.map((lang) => (
+          <Link key={lang.id} href={`/category/${lang.id}`} asChild>
+            <TouchableOpacity style={styles.languageButton}>
+              <Text style={styles.languageText}>{lang.title}</Text>
             </TouchableOpacity>
           </Link>
         ))}
@@ -36,40 +31,28 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#f0f0f0',
     alignItems: 'center',
+    justifyContent: 'center',
   },
   title: {
-    fontSize: 24,
+    fontSize: 20,
     fontWeight: 'bold',
     textAlign: 'center',
-    marginVertical: 20,
+    marginBottom: 30,
+    paddingHorizontal: 20,
   },
-  debug: {
-    fontSize: 12,
-    textAlign: 'center',
-    marginBottom: 5,
+  languagesContainer: {
+    width: '80%',
   },
-  categoriesContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: '100%',
-  },
-  categoryButton: {
-    width: screenWidth * 0.8,
-    height: screenWidth * 0.2,
-    justifyContent: 'center',
-    alignItems: 'center',
+  languageButton: {
+    backgroundColor: '#0a7ea4',
+    padding: 15,
     borderRadius: 10,
     marginVertical: 10,
-    elevation: 5,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
+    alignItems: 'center',
   },
-  categoryText: {
+  languageText: {
     color: 'white',
-    fontSize: 24,
+    fontSize: 18,
     fontWeight: 'bold',
   },
 });
