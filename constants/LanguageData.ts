@@ -22,9 +22,9 @@ export const translations = {
       {key: "yellow", title: 'Yellow'},
     ],
     items: [
-      { key: "tomato", title: 'Tomato', audioFile: require('../assets/app/audio/en/tomato.mp3')},
-      { key: "apple", title: 'Apple', audioFile: require('../assets/app/audio/en/apple.mp3')},
-      { key: "water", title: 'Water', audioFile: require('../assets/app/audio/en/water.mp3')},
+      { key: "tomato", title: 'Tomato', color: "red", audioFile: require('../assets/app/audio/en/tomato.mp3')},
+      { key: "apple", title: 'Apple', color: "red", audioFile: require('../assets/app/audio/en/apple.mp3')},
+      { key: "water", title: 'Water', color: "blue", audioFile: require('../assets/app/audio/en/water.mp3')},
     ],
   },
   it: {
@@ -39,9 +39,9 @@ export const translations = {
       {key: "yellow", title: 'Giallo'},
     ],
     items: [
-      { key: "tomato", title: 'Pomodoro', audioFile: require('../assets/app/audio/it/tomato.mp3')},
-      { key: "apple", title: 'Mela', audioFile: require('../assets/app/audio/it/apple.mp3')},
-      { key: "water", title: 'Acqua', audioFile: require('../assets/app/audio/it/water.mp3')},
+      { key: "tomato", title: 'Pomodoro', color: "red", audioFile: require('../assets/app/audio/it/tomato.mp3')},
+      { key: "apple", title: 'Mela', color: "red", audioFile: require('../assets/app/audio/it/apple.mp3')},
+      { key: "water", title: 'Acqua', color: "blue", audioFile: require('../assets/app/audio/it/water.mp3')},
     ],
   },
   de: {
@@ -56,9 +56,9 @@ export const translations = {
       {key: "yellow", title: 'Giallo'},
     ],
     items: [
-      { key: "tomato", title: 'Pomodoro', audioFile: require('../assets/app/audio/it/tomato.mp3')},
-      { key: "apple", title: 'Mela', audioFile: require('../assets/app/audio/it/apple.mp3')},
-      { key: "water", title: 'Acqua', audioFile: require('../assets/app/audio/it/water.mp3')},
+      { key: "tomato", title: 'Pomodoro', color: "red", audioFile: require('../assets/app/audio/it/tomato.mp3')},
+      { key: "apple", title: 'Mela', color: "red", audioFile: require('../assets/app/audio/it/apple.mp3')},
+      { key: "water", title: 'Acqua', color: "blue", audioFile: require('../assets/app/audio/it/water.mp3')},
     ],
   },
   es: {
@@ -73,9 +73,9 @@ export const translations = {
       {key: "yellow", title: 'Giallo'},
     ],
     items: [
-      { key: "tomato", title: 'Pomodoro', audioFile: require('../assets/app/audio/it/tomato.mp3')},
-      { key: "apple", title: 'Mela', audioFile: require('../assets/app/audio/it/apple.mp3')},
-      { key: "water", title: 'Acqua', audioFile: require('../assets/app/audio/it/water.mp3')},
+      { key: "tomato", title: 'Pomodoro', color: "red", audioFile: require('../assets/app/audio/it/tomato.mp3')},
+      { key: "apple", title: 'Mela', color: "red", audioFile: require('../assets/app/audio/it/apple.mp3')},
+      { key: "water", title: 'Acqua', color: "blue", audioFile: require('../assets/app/audio/it/water.mp3')},
     ],
   },
   // Add similar structures for 'de' and 'es'
@@ -97,4 +97,9 @@ export const getTranslation = (lang: string, key: string): string => {
 export const getAudioFile = (lang: string, itemKey: string) => {
   const item = translations[lang]?.items.find(item => item.key === itemKey);
   return item ? item.audioFile : null;
+};
+
+export const getItemColor = (lang: string, itemKey: string) => {
+  const item = translations[lang]?.items.find(item => item.key === itemKey);
+  return item ? item.color : null;
 };

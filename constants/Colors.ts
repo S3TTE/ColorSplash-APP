@@ -45,10 +45,10 @@ export const colorData = {
   red: [
     { id: 1, title: 'Tomato', image: require('../assets/app/images/dog.jpg'), key: "tomato"},
     { id: 2, title: 'Ketchup', image: require('../assets/app/images/dog.jpg'), key: "tomato"},
-    { id: 3, title: 'Apple', image: require('../assets/app/images/cat.jpg'), key: "tomato"},
+    { id: 3, title: 'Apple', image: require('../assets/app/images/cat.jpg'), key: "apple"},
   ],
   blue: [
-    { id: 1, title: 'Water', image: require('../assets/app/images/cat.jpg'), key: "tomato"},
+    { id: 1, title: 'Water', image: require('../assets/app/images/cat.jpg'), key: "water"},
     { id: 2, title: 'Ice', image: require('../assets/app/images/cat.jpg'), key: "tomato"},
     { id: 3, title: 'Sky', image: require('../assets/app/images/cat.jpg'), key: "tomato"},
   ],

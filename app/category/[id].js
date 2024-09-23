@@ -3,7 +3,8 @@ import { View, Image, TouchableOpacity, StyleSheet, Text, Dimensions, FlatList, 
 import { useLocalSearchParams, Link } from 'expo-router';
 import { Audio } from 'expo-av';
 import Fireworks from '../../components/Firework';
-import { translations, getTranslation, getAudioFile } from '../../constants/LanguageData';
+import { translations, getTranslation, getAudioFile, getItemColor } from '../../constants/LanguageData';
+import { colorData } from '../../constants/Colors';
 
 const { width: screenWidth, height: screenHeight } = Dimensions.get('window');
 
@@ -13,9 +14,10 @@ export default function CategoryPage() {
   const [selectedItem, setSelectedItem] = useState(null);
   const [showFireworks, setShowFireworks] = useState(false);
   const [currentPage, setCurrentPage] = useState(0);
+  const [enlargedImage, setEnlargedImage] = useState(null);
   const animatedValue = useRef(new Animated.Value(0)).current;
   const opacityValue = useRef(new Animated.Value(0)).current;
-  
+
   const animatedStyles = {
     width: animatedValue.interpolate({
       inputRange: [0, 1],
@@ -31,25 +33,25 @@ export default function CategoryPage() {
   const playSound = async (itemKey) => {
     try {
       console.log("Attempting to play audio");
-      
+
       if (sound) {
         console.log("Unloading previous sound");
         await sound.unloadAsync();
       }
-      
+
       const audioFile = getAudioFile(id, itemKey);
       if (!audioFile) {
         console.warn(`Audio file not found for language ${id} and item ${itemKey}`);
         return;
       }
-      
+
       console.log("Creating new sound");
       const { sound: newSound } = await Audio.Sound.createAsync(audioFile);
       setSound(newSound);
-      
+
       console.log("Playing sound");
       await newSound.playAsync();
-      
+
       console.log("Sound played successfully");
     } catch (error) {
       console.error("Error playing sound:", error);
@@ -63,10 +65,20 @@ export default function CategoryPage() {
       }
       : undefined;
   }, [sound]);
+  const getImageForItem = (itemKey, color) => {
+    const colorItems = colorData[color];
+    if (colorItems) {
+      const item = colorItems.find(i => i.key === itemKey);
+      return item ? item.image : null;
+    }
+    return null;
+  };
 
   const handleItemPress = (item) => {
     setSelectedItem(item);
     setShowFireworks(true);
+    const image = getImageForItem(item.key, item.color);
+    setEnlargedImage(image);
     console.log(id, item);
     playSound(item.key);
 
@@ -97,16 +109,14 @@ export default function CategoryPage() {
         ]).start(() => {
           setSelectedItem(null);
           setShowFireworks(false);
+          setEnlargedImage(null);
         });
       }, 3000);
     });
   };
 
   const renderColorCategory = (color) => {
-    const categoryData = translations[id].items.filter(item => 
-      // You might want to add a 'color' property to items or use a mapping to determine which color an item belongs to
-      true // For now, we're showing all items in each category
-    );
+    const categoryData = translations[id].items.filter(item => item.color === color);
     const categoryName = translations[id].colors.find(c => c.key === color)?.title;
 
     return (
@@ -114,15 +124,18 @@ export default function CategoryPage() {
         <Text style={styles.title}>{categoryName}</Text>
         <FlatList
           data={categoryData}
-          renderItem={({ item }) => (
-            <TouchableOpacity
-              style={styles.itemContainer}
-              onPress={() => handleItemPress(item)}
-            >
-              <Image source={require('../../assets/app/images/dog.jpg')} style={styles.image} />
-              <Text style={styles.itemTitle}>{item.title}</Text>
-            </TouchableOpacity>
-          )}
+          renderItem={({ item }) => {
+            const image = getImageForItem(item.key, item.color);
+            return (
+              <TouchableOpacity
+                style={styles.itemContainer}
+                onPress={() => handleItemPress(item)}
+              >
+                {image && <Image source={image} style={styles.image} />}
+                <Text style={styles.itemTitle}>{item.title}</Text>
+              </TouchableOpacity>
+            );
+          }}
           keyExtractor={(item) => item.key}
           numColumns={2}
           contentContainerStyle={styles.listContent}
@@ -149,6 +162,11 @@ export default function CategoryPage() {
       >
         {translations[id].colors.map(category => renderColorCategory(category.key))}
       </ScrollView>
+      {enlargedImage && (
+        <Animated.View style={[styles.enlargedImageContainer, animatedStyles]}>
+          <Image source={enlargedImage} style={styles.enlargedImage} />
+        </Animated.View>
+      )}
       <View style={styles.pagination}>
         {translations[id].colors.map((category, index) => (
           <View
