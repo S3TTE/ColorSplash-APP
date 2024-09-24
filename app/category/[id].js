@@ -66,7 +66,9 @@ export default function CategoryPage() {
       : undefined;
   }, [sound]);
   const getImageForItem = (itemKey, color) => {
+    //console.log(itemKey,color)
     const colorItems = colorData[color];
+    //console.log(colorItems)
     if (colorItems) {
       const item = colorItems.find(i => i.key === itemKey);
       return item ? item.image : null;
@@ -79,7 +81,7 @@ export default function CategoryPage() {
     setShowFireworks(true);
     const image = getImageForItem(item.key, item.color);
     setEnlargedImage(image);
-    console.log(id, item);
+    //console.log(id, item);
     playSound(item.key);
 
     Animated.parallel([
@@ -117,6 +119,7 @@ export default function CategoryPage() {
 
   const renderColorCategory = (color) => {
     const categoryData = translations[id].items.filter(item => item.color === color);
+    console.log(categoryData)
     const categoryName = translations[id].colors.find(c => c.key === color)?.title;
 
     return (
@@ -181,7 +184,7 @@ export default function CategoryPage() {
       </View>
       {selectedItem && (
         <Animated.View style={[styles.enlargedImageContainer, animatedStyles]}>
-          <Image source={require('../../assets/app/images/dog.jpg')} style={styles.enlargedImage} />
+          <Image source={selectedItem} style={styles.enlargedImage} />
         </Animated.View>
       )}
       {showFireworks && (

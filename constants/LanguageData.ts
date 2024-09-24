@@ -40,8 +40,21 @@ export const translations = {
     ],
     items: [
       { key: "tomato", title: 'Pomodoro', color: "red", audioFile: require('../assets/app/audio/it/tomato.mp3')},
-      { key: "apple", title: 'Mela', color: "red", audioFile: require('../assets/app/audio/it/apple.mp3')},
+      { key: "cherry", title: 'Ciliegia', color: "red", audioFile: require('../assets/app/audio/it/cherry.mp3')},
+      { key: "ladybug", title: 'Coccinella', color: "red", audioFile: require('../assets/app/audio/it/ladybug.mp3')},
+      { key: "firetruck", title: 'Camion dei Pompieri', color: "red", audioFile: require('../assets/app/audio/it/fire_truck.mp3')},
+      { key: "strawberry", title: 'Fragola', color: "red", audioFile: require('../assets/app/audio/it/strawberry.mp3')},
       { key: "water", title: 'Acqua', color: "blue", audioFile: require('../assets/app/audio/it/water.mp3')},
+      { key: "sky", title: 'Cielo', color: "blue", audioFile: require('../assets/app/audio/it/sky.mp3')},
+      { key: "blueberries", title: 'Mirtilli', color: "blue", audioFile: require('../assets/app/audio/it/blueberries.mp3')},
+      { key: "blackberry", title: 'More', color: "blue", audioFile: require('../assets/app/audio/it/blackberry.mp3')},
+      { key: "bluebird", title: 'Uccellino', color: "blue", audioFile: require('../assets/app/audio/it/bluebird.mp3')},
+      { key: "grass", title: 'Erba', color: "green", audioFile: require('../assets/app/audio/it/bluebird.mp3')},
+      { key: "banana", title: 'Banana', color: "yellow", audioFile: require('../assets/app/audio/it/banana.mp3')},
+      { key: "corn", title: 'Pannocchia', color: "yellow", audioFile: require('../assets/app/audio/it/corn.mp3')},
+      { key: "duck", title: 'Papera', color: "yellow", audioFile: require('../assets/app/audio/it/duck.mp3')},
+      { key: "lemon", title: 'Limone', color: "yellow", audioFile: require('../assets/app/audio/it/lemon.mp3')},
+      { key: "sun", title: 'Sole', color: "yellow", audioFile: require('../assets/app/audio/it/sun.mp3')},
     ],
   },
   de: {
@@ -73,9 +86,6 @@ export const translations = {
       {key: "yellow", title: 'Giallo'},
     ],
     items: [
-      { key: "tomato", title: 'Pomodoro', color: "red", audioFile: require('../assets/app/audio/it/tomato.mp3')},
-      { key: "apple", title: 'Mela', color: "red", audioFile: require('../assets/app/audio/it/apple.mp3')},
-      { key: "water", title: 'Acqua', color: "blue", audioFile: require('../assets/app/audio/it/water.mp3')},
     ],
   },
   // Add similar structures for 'de' and 'es'

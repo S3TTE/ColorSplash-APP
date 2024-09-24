@@ -43,21 +43,23 @@ export const colorCategoryTranslations = {
 
 export const colorData = {
   red: [
-    { id: 1, title: 'Tomato', image: require('../assets/app/images/dog.jpg'), key: "tomato"},
-    { id: 2, title: 'Ketchup', image: require('../assets/app/images/dog.jpg'), key: "tomato"},
-    { id: 3, title: 'Apple', image: require('../assets/app/images/cat.jpg'), key: "apple"},
+    { id: 1, image: require('../assets/app/images/cherry.jpg'), key: "cherry"},
+    { id: 2, image: require('../assets/app/images/tomato.jpg'), key: "tomato"},
+    { id: 3, image: require('../assets/app/images/firetruck.jpg'), key: "firetruck"},
+    { id: 4, image: require('../assets/app/images/ladybug.jpg'), key: "ladybug"},
+    { id: 5, image: require('../assets/app/images/strawberry.jpg'), key: "strawberry"},
   ],
   blue: [
-    { id: 1, title: 'Water', image: require('../assets/app/images/cat.jpg'), key: "water"},
-    { id: 2, title: 'Ice', image: require('../assets/app/images/cat.jpg'), key: "tomato"},
-    { id: 3, title: 'Sky', image: require('../assets/app/images/cat.jpg'), key: "tomato"},
+    { id: 1, image: require('../assets/app/images/cat.jpg'), key: "water"},
+    { id: 2, image: require('../assets/app/images/cat.jpg'), key: "tomato"},
+    { id: 3, image: require('../assets/app/images/cat.jpg'), key: "tomato"},
   ],
   green: [
-    { id: 1, title: 'Grass', image: require('../assets/app/images/cat.jpg'), key: "tomato"},
-    { id: 2, title: 'Leaf', image: require('../assets/app/images/dog.jpg'), key: "tomato"},
+    { id: 1, image: require('../assets/app/images/cat.jpg'), key: "grass"},
+    { id: 2, image: require('../assets/app/images/dog.jpg'), key: "tomato"},
   ],
   yellow: [
-    { id: 1, title: 'Sun', image: require('../assets/app/images/cat.jpg'), key: "tomato"},
-    { id: 2, title: 'Banana', image: require('../assets/app/images/dog.jpg'), key: "tomato"},
+    { id: 1, image: require('../assets/app/images/cat.jpg'), key: "tomato"},
+    { id: 2, image: require('../assets/app/images/dog.jpg'), key: "tomato"},
   ],
 };
