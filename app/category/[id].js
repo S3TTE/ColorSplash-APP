@@ -235,12 +235,14 @@ const styles = StyleSheet.create({
     flex: 1,
     margin: 10,
     alignItems: 'center',
+    padding: 10,
   },
   image: {
-    width: screenWidth * 0.4,
-    height: screenWidth * 0.4,
-    resizeMode: 'cover',
+    width: "100%",
+    height: undefined,
+    resizeMode: 'contain',
     borderRadius: 10,
+    aspectRatio: 1,
   },
   itemTitle: {
     marginTop: 10,
@@ -257,8 +259,9 @@ const styles = StyleSheet.create({
   },
   enlargedImage: {
     width: '100%',
-    height: '100%',
-    resizeMode: 'cover',
+    height: undefined,
+    resizeMode: 'contain',
+    aspectRatio:1,
   },
   pagination: {
     flexDirection: 'row',
