@@ -1,16 +1,17 @@
 # Welcome to ColorSplash 👋
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+This is Game-App made to help kids to learn Color in multiple languages.
+
+it use items with different dimension to help kids understanding that a color can be associated with different items with different shape
 
 ## Item
 
 ### Red
-- Apple
+- Cherry
 - Fire truck
 - Ladybug
 - Strawberry
 - Tomato
-- Stop sign
 ### Blue
 - Sky
 - Whale
