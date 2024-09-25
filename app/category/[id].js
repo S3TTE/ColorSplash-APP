@@ -242,7 +242,7 @@ const styles = StyleSheet.create({
     flex: 1,
     margin: 10,
     alignItems: 'center',
-    padding: 10,
+    padding: 5,
   },
   image: {
     width: "100%",
@@ -258,7 +258,7 @@ const styles = StyleSheet.create({
   },
   enlargedImageContainer: {
     position: 'absolute',
-    top: screenHeight / 2 - screenWidth * 0.2,
+    top: screenHeight / 2 - screenHeight * 0.2,
     left: screenWidth / 2 - screenWidth * 0.4,
     zIndex: 1000,
     borderRadius: 10,
