@@ -122,11 +122,18 @@ export default function CategoryPage() {
     console.log(categoryData)
     const categoryName = translations[id].colors.find(c => c.key === color)?.title;
 
+    // Sort the categoryData based on the id in colorData
+    const sortedCategoryData = categoryData.sort((a, b) => {
+      const aIndex = colorData[color].findIndex(item => item.key === a.key);
+      const bIndex = colorData[color].findIndex(item => item.key === b.key);
+      return aIndex - bIndex;
+    });
+
     return (
       <View style={[styles.categoryContainer, { width: screenWidth }]} key={color}>
         <Text style={styles.title}>{categoryName}</Text>
         <FlatList
-          data={categoryData}
+          data={sortedCategoryData}
           renderItem={({ item }) => {
             const image = getImageForItem(item.key, item.color);
             return (
@@ -135,7 +142,7 @@ export default function CategoryPage() {
                 onPress={() => handleItemPress(item)}
               >
                 {image && <Image source={image} style={styles.image} />}
-                <Text style={styles.itemTitle}>{item.title}</Text>
+                {!image && <Text style={styles.itemTitle}>{item.title}</Text>}
               </TouchableOpacity>
             );
           }}
@@ -208,7 +215,7 @@ export default function CategoryPage() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f0f0f0',
+    backgroundColor: '#d9d4be',
   },
   backButton: {
     padding: 10,

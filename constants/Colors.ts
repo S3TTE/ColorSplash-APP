@@ -43,11 +43,11 @@ export const colorCategoryTranslations = {
 
 export const colorData = {
   red: [
-    { id: 1, image: require('../assets/app/images/cherry.jpg'), key: "cherry"},
-    { id: 2, image: require('../assets/app/images/tomato.jpg'), key: "tomato"},
-    { id: 3, image: require('../assets/app/images/firetruck.jpg'), key: "firetruck"},
-    { id: 4, image: require('../assets/app/images/ladybug.jpg'), key: "ladybug"},
-    { id: 5, image: require('../assets/app/images/strawberry.jpg'), key: "strawberry"},
+    { id: 1, image: require('../assets/app/images/cherry.png'), key: "cherry"},
+    { id: 2, image: require('../assets/app/images/tomato.png'), key: "tomato"},
+    { id: 3, image: require('../assets/app/images/ladybug.png'), key: "ladybug"},
+    { id: 4, image: require('../assets/app/images/strawberry.png'), key: "strawberry"},
+    { id: 5, image: require('../assets/app/images/firetruck.png'), key: "firetruck"},
   ],
   blue: [
     { id: 1, image: require('../assets/app/images/cat.jpg'), key: "water"},
