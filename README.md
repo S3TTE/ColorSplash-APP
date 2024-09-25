@@ -54,3 +54,14 @@ it use items with different dimension to help kids understanding that a color ca
 - Piglet
 - Pink eraser
 - Bubble gum
+
+
+## DEV Info
+
+### Audio
+all the audio could be generated online from [TTS]{https://ttsfree.com/text-to-speech/italian}
+here the voice selected
+71. Italian - Elsa
+50. English (US) - Aria
+61. German - Conrad
+119. Spanish - Elvira

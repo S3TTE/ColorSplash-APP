@@ -22,9 +22,11 @@ export const translations = {
       {key: "yellow", title: 'Yellow'},
     ],
     items: [
-      { key: "tomato", title: 'Tomato', color: "red", audioFile: require('../assets/app/audio/en/tomato.mp3')},
-      { key: "apple", title: 'Apple', color: "red", audioFile: require('../assets/app/audio/en/apple.mp3')},
-      { key: "water", title: 'Water', color: "blue", audioFile: require('../assets/app/audio/en/water.mp3')},
+      { key: "tomato", title: 'Pomodoro', color: "red", audioFile: require('../assets/app/audio/it/tomato.mp3')},
+      { key: "cherry", title: 'Ciliegia', color: "red", audioFile: require('../assets/app/audio/it/cherry.mp3')},
+      { key: "ladybug", title: 'Coccinella', color: "red", audioFile: require('../assets/app/audio/it/ladybug.mp3')},
+      { key: "firetruck", title: 'Camion dei Pompieri', color: "red", audioFile: require('../assets/app/audio/it/fire_truck.mp3')},
+      { key: "strawberry", title: 'Fragola', color: "red", audioFile: require('../assets/app/audio/it/strawberry.mp3')},
     ],
   },
   it: {
@@ -70,8 +72,10 @@ export const translations = {
     ],
     items: [
       { key: "tomato", title: 'Pomodoro', color: "red", audioFile: require('../assets/app/audio/it/tomato.mp3')},
-      { key: "apple", title: 'Mela', color: "red", audioFile: require('../assets/app/audio/it/apple.mp3')},
-      { key: "water", title: 'Acqua', color: "blue", audioFile: require('../assets/app/audio/it/water.mp3')},
+      { key: "cherry", title: 'Ciliegia', color: "red", audioFile: require('../assets/app/audio/it/cherry.mp3')},
+      { key: "ladybug", title: 'Coccinella', color: "red", audioFile: require('../assets/app/audio/it/ladybug.mp3')},
+      { key: "firetruck", title: 'Camion dei Pompieri', color: "red", audioFile: require('../assets/app/audio/it/fire_truck.mp3')},
+      { key: "strawberry", title: 'Fragola', color: "red", audioFile: require('../assets/app/audio/it/strawberry.mp3')},
     ],
   },
   es: {
@@ -86,9 +90,14 @@ export const translations = {
       {key: "yellow", title: 'Giallo'},
     ],
     items: [
+      { key: "tomato", title: 'Pomodoro', color: "red", audioFile: require('../assets/app/audio/it/tomato.mp3')},
+      { key: "cherry", title: 'Ciliegia', color: "red", audioFile: require('../assets/app/audio/it/cherry.mp3')},
+      { key: "ladybug", title: 'Coccinella', color: "red", audioFile: require('../assets/app/audio/it/ladybug.mp3')},
+      { key: "firetruck", title: 'Camion dei Pompieri', color: "red", audioFile: require('../assets/app/audio/it/fire_truck.mp3')},
+      { key: "strawberry", title: 'Fragola', color: "red", audioFile: require('../assets/app/audio/it/strawberry.mp3')},
     ],
   },
-  // Add similar structures for 'de' and 'es'
+  // Add similar structures for other languages
 };
 
 export const getTranslation = (lang: string, key: string): string => {
