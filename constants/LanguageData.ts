@@ -61,14 +61,14 @@ export const translations = {
   },
   de: {
     functionality: {
-      backToLanguageSelection: 'Torna alla selezione della lingua',
-      colorCategories: 'Categorie di colori',
+      backToLanguageSelection: 'Zurück zur Sprachauswahl',
+      colorCategories: 'Farbkategorien',
     },
     colors: [
-      {key: "red", title: 'Rosso'},
-      {key: "blue", title: 'Blu'},
-      {key: "green", title: 'Verde'},
-      {key: "yellow", title: 'Giallo'},
+      {key: "red", title: 'Rot'},
+      {key: "blue", title: 'Blau'},
+      {key: "green", title: 'Grün'},
+      {key: "yellow", title: 'Gelb'},
     ],
     items: [
       { key: "tomato", title: 'Pomodoro', color: "red", audioFile: require('../assets/app/audio/it/tomato.mp3')},
@@ -80,21 +80,21 @@ export const translations = {
   },
   es: {
     functionality: {
-      backToLanguageSelection: 'Torna alla selezione della lingua',
-      colorCategories: 'Categorie di colori',
+      backToLanguageSelection: 'Volver a la selección de idioma',
+      colorCategories: 'Categorías de color',
     },
     colors: [
-      {key: "red", title: 'Rosso'},
-      {key: "blue", title: 'Blu'},
+      {key: "red", title: 'Rojo'},
+      {key: "blue", title: 'Azul'},
       {key: "green", title: 'Verde'},
-      {key: "yellow", title: 'Giallo'},
+      {key: "yellow", title: 'Amarillo'},
     ],
     items: [
-      { key: "tomato", title: 'Pomodoro', color: "red", audioFile: require('../assets/app/audio/it/tomato.mp3')},
-      { key: "cherry", title: 'Ciliegia', color: "red", audioFile: require('../assets/app/audio/it/cherry.mp3')},
-      { key: "ladybug", title: 'Coccinella', color: "red", audioFile: require('../assets/app/audio/it/ladybug.mp3')},
-      { key: "firetruck", title: 'Camion dei Pompieri', color: "red", audioFile: require('../assets/app/audio/it/fire_truck.mp3')},
-      { key: "strawberry", title: 'Fragola', color: "red", audioFile: require('../assets/app/audio/it/strawberry.mp3')},
+      { key: "tomato", title: 'Tomate', color: "red", audioFile: require('../assets/app/audio/it/tomato.mp3')},
+      { key: "cherry", title: 'Cereza', color: "red", audioFile: require('../assets/app/audio/it/cherry.mp3')},
+      { key: "ladybug", title: 'Mariquita', color: "red", audioFile: require('../assets/app/audio/it/ladybug.mp3')},
+      { key: "firetruck", title: 'Camión de bomberos', color: "red", audioFile: require('../assets/app/audio/it/fire_truck.mp3')},
+      { key: "strawberry", title: 'Fresa', color: "red", audioFile: require('../assets/app/audio/it/strawberry.mp3')},
     ],
   },
   // Add similar structures for other languages
