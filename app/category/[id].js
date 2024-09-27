@@ -45,7 +45,7 @@ export default function CategoryPage() {
         return;
       }
 
-      console.log("Creating new sound");
+      console.log("Creating new sound:", audioFile);
       const { sound: newSound } = await Audio.Sound.createAsync(audioFile);
       setSound(newSound);
 
