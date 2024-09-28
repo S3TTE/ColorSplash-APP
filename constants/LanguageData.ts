@@ -22,11 +22,20 @@ export const translations = {
       {key: "yellow", title: 'Yellow'},
     ],
     items: [
+      //red
       { key: "tomato", title: 'Pomodoro', color: "red", audioFile: require('../assets/app/audio/en/tomato.mp3')},
       { key: "cherry", title: 'Ciliegia', color: "red", audioFile: require('../assets/app/audio/en/cherry.mp3')},
       { key: "ladybug", title: 'Coccinella', color: "red", audioFile: require('../assets/app/audio/en/ladybug.mp3')},
       { key: "firetruck", title: 'Camion dei Pompieri', color: "red", audioFile: require('../assets/app/audio/en/fire_truck.mp3')},
       { key: "strawberry", title: 'Fragola', color: "red", audioFile: require('../assets/app/audio/en/strawberry.mp3')},
+
+      //yellow
+      { key: "banana", title: 'Banana', color: "yellow", audioFile: require('../assets/app/audio/en/banana.mp3')},
+      { key: "corn", title: 'Pannocchia', color: "yellow", audioFile: require('../assets/app/audio/en/corn.mp3')},
+      { key: "duck", title: 'Papera', color: "yellow", audioFile: require('../assets/app/audio/en/duck.mp3')},
+      { key: "lemon", title: 'Limone', color: "yellow", audioFile: require('../assets/app/audio/en/lemon.mp3')},
+      { key: "sun", title: 'Sole', color: "yellow", audioFile: require('../assets/app/audio/en/sun.mp3')},
+      { key: "schoolbus", title: 'Autobus', color: "yellow", audioFile: require('../assets/app/audio/en/schoolbus.mp3')},
     ],
   },
   it: {
@@ -57,6 +66,7 @@ export const translations = {
       { key: "duck", title: 'Papera', color: "yellow", audioFile: require('../assets/app/audio/it/duck.mp3')},
       { key: "lemon", title: 'Limone', color: "yellow", audioFile: require('../assets/app/audio/it/lemon.mp3')},
       { key: "sun", title: 'Sole', color: "yellow", audioFile: require('../assets/app/audio/it/sun.mp3')},
+      { key: "schoolbus", title: 'Autobus', color: "yellow", audioFile: require('../assets/app/audio/it/schoolbus.mp3')},
     ],
   },
   de: {
@@ -76,6 +86,13 @@ export const translations = {
       { key: "ladybug", title: 'Coccinella', color: "red", audioFile: require('../assets/app/audio/de/ladybug.mp3')},
       { key: "firetruck", title: 'Camion dei Pompieri', color: "red", audioFile: require('../assets/app/audio/de/fire_truck.mp3')},
       { key: "strawberry", title: 'Fragola', color: "red", audioFile: require('../assets/app/audio/de/strawberry.mp3')},
+      //yellow
+      { key: "banana", title: 'Banane', color: "yellow", audioFile: require('../assets/app/audio/de/banana.mp3')},
+      { key: "corn", title: 'Maiskolben', color: "yellow", audioFile: require('../assets/app/audio/de/corn.mp3')},
+      { key: "duck", title: 'Ente', color: "yellow", audioFile: require('../assets/app/audio/de/duck.mp3')},
+      { key: "lemon", title: 'Zitrone', color: "yellow", audioFile: require('../assets/app/audio/de/lemon.mp3')},
+      { key: "sun", title: 'Sonne', color: "yellow", audioFile: require('../assets/app/audio/de/sun.mp3')},
+      { key: "schoolbus", title: 'Schulbus', color: "yellow", audioFile: require('../assets/app/audio/de/schoolbus.mp3')},
     ],
   },
   es: {
@@ -95,6 +112,14 @@ export const translations = {
       { key: "ladybug", title: 'Mariquita', color: "red", audioFile: require('../assets/app/audio/es/ladybug.mp3')},
       { key: "firetruck", title: 'Camión de bomberos', color: "red", audioFile: require('../assets/app/audio/es/fire_truck.mp3')},
       { key: "strawberry", title: 'Fresa', color: "red", audioFile: require('../assets/app/audio/es/strawberry.mp3')},
+
+      //yellow
+      { key: "banana", title: 'Plátano', color: "yellow", audioFile: require('../assets/app/audio/es/banana.mp3')},
+      { key: "corn", title: 'Mazorca de maíz', color: "yellow", audioFile: require('../assets/app/audio/es/corn.mp3')},
+      { key: "duck", title: 'Pato', color: "yellow", audioFile: require('../assets/app/audio/es/duck.mp3')},
+      { key: "lemon", title: 'Limón', color: "yellow", audioFile: require('../assets/app/audio/es/lemon.mp3')},
+      { key: "sun", title: 'Sol', color: "yellow", audioFile: require('../assets/app/audio/es/sun.mp3')},
+      { key: "schoolbus", title: 'Autobús', color: "yellow", audioFile: require('../assets/app/audio/es/schoolbus.mp3')},
     ],
   },
   // Add similar structures for other languages

@@ -59,7 +59,11 @@ export const colorData = {
     { id: 2, image: require('../assets/app/images/dog.jpg'), key: "tomato"},
   ],
   yellow: [
-    { id: 1, image: require('../assets/app/images/cat.jpg'), key: "tomato"},
-    { id: 2, image: require('../assets/app/images/dog.jpg'), key: "tomato"},
+    { id: 1, image: require('../assets/app/images/banana.png'), key: "banana"},
+    { id: 2, image: require('../assets/app/images/corn.png'), key: "corn"},
+    { id: 3, image: require('../assets/app/images/lemon.png'), key: "lemon"},
+    { id: 4, image: require('../assets/app/images/schoolbus.png'), key: "schoolbus"},
+    { id: 5, image: require('../assets/app/images/sun.png'), key: "sun"},
+    { id: 5, image: require('../assets/app/images/duck.png'), key: "duck"},
   ],
 };
