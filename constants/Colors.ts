@@ -50,13 +50,18 @@ export const colorData = {
     { id: 5, image: require('../assets/app/images/firetruck.png'), key: "firetruck"},
   ],
   blue: [
-    { id: 1, image: require('../assets/app/images/cat.jpg'), key: "water"},
-    { id: 2, image: require('../assets/app/images/cat.jpg'), key: "tomato"},
-    { id: 3, image: require('../assets/app/images/cat.jpg'), key: "tomato"},
+    { id: 1, image: require('../assets/app/images/whale.png'), key: "whale"},
+    { id: 2, image: require('../assets/app/images/blueberries.png'), key: "blueberries"},
+    { id: 3, image: require('../assets/app/images/baloon.png'), key: "baloon"},
+    { id: 4, image: require('../assets/app/images/bird.png'), key: "bird"},
+    { id: 5, image: require('../assets/app/images/sea.png'), key: "sea"},
   ],
   green: [
-    { id: 1, image: require('../assets/app/images/cat.jpg'), key: "grass"},
-    { id: 2, image: require('../assets/app/images/dog.jpg'), key: "tomato"},
+    { id: 1, image: require('../assets/app/images/apple.png'), key: "apple"},
+    { id: 2, image: require('../assets/app/images/turtle.png'), key: "turtle"},
+    { id: 3, image: require('../assets/app/images/frog.png'), key: "frog"},
+    { id: 4, image: require('../assets/app/images/broccoli.png'), key: "broccoli"},
+    { id: 5, image: require('../assets/app/images/grass.png'), key: "grass"},
   ],
   yellow: [
     { id: 1, image: require('../assets/app/images/banana.png'), key: "banana"},

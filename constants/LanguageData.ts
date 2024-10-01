@@ -29,6 +29,20 @@ export const translations = {
       { key: "firetruck", title: 'Camion dei Pompieri', color: "red", audioFile: require('../assets/app/audio/en/fire_truck.mp3')},
       { key: "strawberry", title: 'Fragola', color: "red", audioFile: require('../assets/app/audio/en/strawberry.mp3')},
 
+      //blue
+      { key: "baloon", title: 'Baloon', color: "blue", audioFile: require('../assets/app/audio/en/baloon.mp3')},
+      { key: "bird", title: 'Bird', color: "blue", audioFile: require('../assets/app/audio/en/bluebird.mp3')},
+      { key: "blueberries", title: 'Blueberries', color: "blue", audioFile: require('../assets/app/audio/en/blueberries.mp3')},
+      { key: "sea", title: 'Sea', color: "blue", audioFile: require('../assets/app/audio/en/sea.mp3')},
+      { key: "whale", title: 'Whale', color: "blue", audioFile: require('../assets/app/audio/en/whale.mp3')},
+
+      //green
+      { key: "apple", title: 'Apple', color: "green", audioFile: require('../assets/app/audio/en/apple.mp3')},
+      { key: "broccoli", title: 'Broccoli', color: "green", audioFile: require('../assets/app/audio/en/broccoli.mp3')},
+      { key: "frog", title: 'Frog', color: "green", audioFile: require('../assets/app/audio/en/frog.mp3')},
+      { key: "grass", title: 'Grass', color: "green", audioFile: require('../assets/app/audio/en/grass.mp3')},
+      { key: "turtle", title: 'Turtle', color: "green", audioFile: require('../assets/app/audio/en/turtle.mp3')},
+
       //yellow
       { key: "banana", title: 'Banana', color: "yellow", audioFile: require('../assets/app/audio/en/banana.mp3')},
       { key: "corn", title: 'Pannocchia', color: "yellow", audioFile: require('../assets/app/audio/en/corn.mp3')},
@@ -55,12 +69,21 @@ export const translations = {
       { key: "ladybug", title: 'Coccinella', color: "red", audioFile: require('../assets/app/audio/it/ladybug.mp3')},
       { key: "firetruck", title: 'Camion dei Pompieri', color: "red", audioFile: require('../assets/app/audio/it/fire_truck.mp3')},
       { key: "strawberry", title: 'Fragola', color: "red", audioFile: require('../assets/app/audio/it/strawberry.mp3')},
-      { key: "water", title: 'Acqua', color: "blue", audioFile: require('../assets/app/audio/it/water.mp3')},
-      { key: "sky", title: 'Cielo', color: "blue", audioFile: require('../assets/app/audio/it/sky.mp3')},
-      { key: "blueberries", title: 'Mirtilli', color: "blue", audioFile: require('../assets/app/audio/it/blueberries.mp3')},
-      { key: "blackberry", title: 'More', color: "blue", audioFile: require('../assets/app/audio/it/blackberry.mp3')},
-      { key: "bluebird", title: 'Uccellino', color: "blue", audioFile: require('../assets/app/audio/it/bluebird.mp3')},
-      { key: "grass", title: 'Erba', color: "green", audioFile: require('../assets/app/audio/it/bluebird.mp3')},
+
+      //blue
+      { key: "baloon", title: 'Baloon', color: "blue", audioFile: require('../assets/app/audio/it/baloon.mp3')},
+      { key: "bird", title: 'Bird', color: "blue", audioFile: require('../assets/app/audio/it/bluebird.mp3')},
+      { key: "blueberries", title: 'Blueberries', color: "blue", audioFile: require('../assets/app/audio/it/blueberries.mp3')},
+      { key: "sea", title: 'Sea', color: "blue", audioFile: require('../assets/app/audio/it/sea.mp3')},
+      { key: "whale", title: 'Whale', color: "blue", audioFile: require('../assets/app/audio/it/whale.mp3')},
+      
+      //green
+      { key: "apple", title: 'Apple', color: "green", audioFile: require('../assets/app/audio/it/apple.mp3')},
+      { key: "broccoli", title: 'Broccoli', color: "green", audioFile: require('../assets/app/audio/it/broccoli.mp3')},
+      { key: "frog", title: 'Frog', color: "green", audioFile: require('../assets/app/audio/it/frog.mp3')},
+      { key: "grass", title: 'Grass', color: "green", audioFile: require('../assets/app/audio/it/grass.mp3')},
+      { key: "turtle", title: 'Turtle', color: "green", audioFile: require('../assets/app/audio/it/turtle.mp3')},
+
       { key: "banana", title: 'Banana', color: "yellow", audioFile: require('../assets/app/audio/it/banana.mp3')},
       { key: "corn", title: 'Pannocchia', color: "yellow", audioFile: require('../assets/app/audio/it/corn.mp3')},
       { key: "duck", title: 'Papera', color: "yellow", audioFile: require('../assets/app/audio/it/duck.mp3')},
@@ -86,6 +109,18 @@ export const translations = {
       { key: "ladybug", title: 'Coccinella', color: "red", audioFile: require('../assets/app/audio/de/ladybug.mp3')},
       { key: "firetruck", title: 'Camion dei Pompieri', color: "red", audioFile: require('../assets/app/audio/de/fire_truck.mp3')},
       { key: "strawberry", title: 'Fragola', color: "red", audioFile: require('../assets/app/audio/de/strawberry.mp3')},
+      //blue
+      { key: "baloon", title: 'Baloon', color: "blue", audioFile: require('../assets/app/audio/de/baloon.mp3')},
+      { key: "bird", title: 'Bird', color: "blue", audioFile: require('../assets/app/audio/de/bluebird.mp3')},
+      { key: "blueberries", title: 'Blueberries', color: "blue", audioFile: require('../assets/app/audio/de/blueberries.mp3')},
+      { key: "sea", title: 'Sea', color: "blue", audioFile: require('../assets/app/audio/de/sea.mp3')},
+      { key: "whale", title: 'Whale', color: "blue", audioFile: require('../assets/app/audio/de/whale.mp3')},
+      //green
+      { key: "apple", title: 'Apple', color: "green", audioFile: require('../assets/app/audio/de/apple.mp3')},
+      { key: "broccoli", title: 'Broccoli', color: "green", audioFile: require('../assets/app/audio/de/broccoli.mp3')},
+      { key: "frog", title: 'Frog', color: "green", audioFile: require('../assets/app/audio/de/frog.mp3')},
+      { key: "grass", title: 'Grass', color: "green", audioFile: require('../assets/app/audio/de/grass.mp3')},
+      { key: "turtle", title: 'Turtle', color: "green", audioFile: require('../assets/app/audio/de/turtle.mp3')},
       //yellow
       { key: "banana", title: 'Banane', color: "yellow", audioFile: require('../assets/app/audio/de/banana.mp3')},
       { key: "corn", title: 'Maiskolben', color: "yellow", audioFile: require('../assets/app/audio/de/corn.mp3')},
@@ -112,6 +147,19 @@ export const translations = {
       { key: "ladybug", title: 'Mariquita', color: "red", audioFile: require('../assets/app/audio/es/ladybug.mp3')},
       { key: "firetruck", title: 'Camión de bomberos', color: "red", audioFile: require('../assets/app/audio/es/fire_truck.mp3')},
       { key: "strawberry", title: 'Fresa', color: "red", audioFile: require('../assets/app/audio/es/strawberry.mp3')},
+      //blue
+      { key: "baloon", title: 'Baloon', color: "blue", audioFile: require('../assets/app/audio/es/baloon.mp3')},
+      { key: "bird", title: 'Bird', color: "blue", audioFile: require('../assets/app/audio/es/bluebird.mp3')},
+      { key: "blueberries", title: 'Blueberries', color: "blue", audioFile: require('../assets/app/audio/es/blueberries.mp3')},
+      { key: "sea", title: 'Sea', color: "blue", audioFile: require('../assets/app/audio/es/sea.mp3')},
+      { key: "whale", title: 'Whale', color: "blue", audioFile: require('../assets/app/audio/es/whale.mp3')},
+      
+      //green
+      { key: "apple", title: 'Apple', color: "green", audioFile: require('../assets/app/audio/es/apple.mp3')},
+      { key: "broccoli", title: 'Broccoli', color: "green", audioFile: require('../assets/app/audio/es/broccoli.mp3')},
+      { key: "frog", title: 'Frog', color: "green", audioFile: require('../assets/app/audio/es/frog.mp3')},
+      { key: "grass", title: 'Grass', color: "green", audioFile: require('../assets/app/audio/es/grass.mp3')},
+      { key: "turtle", title: 'Turtle', color: "green", audioFile: require('../assets/app/audio/es/turtle.mp3')},
 
       //yellow
       { key: "banana", title: 'Plátano', color: "yellow", audioFile: require('../assets/app/audio/es/banana.mp3')},
