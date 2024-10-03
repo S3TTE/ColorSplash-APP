@@ -131,7 +131,9 @@ export default function CategoryPage() {
               resizeMode="contain"
             />
           </Link>
-          <Text style={styles.title}>{categoryName}</Text>
+          <View style={{ marginLeft:-50, flex: 1, justifyContent: 'center' }}>
+            <Text style={styles.title}>{categoryName}</Text>
+          </View>
         </View>
         <FlatList
           data={sortedCategoryData}
@@ -158,7 +160,7 @@ export default function CategoryPage() {
   return (
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.container}>
-        
+
         <ScrollView
           horizontal
           pagingEnabled
@@ -223,18 +225,16 @@ const styles = StyleSheet.create({
     backgroundColor: '#d9d4be',
   },
   headerContainer: {
-    //position: 'absolute',
-    //top: Platform.OS === 'android' ? statusBarHeight + 10 : 10,
-    //left: 20,
-    //zIndex: 1000,
-    //display: 'flex',
     flexDirection: 'row',
-    //alignItems: 'center'
+  },
+  backButton: {
+    zIndex:10
   },
   backButtonImage: {
     width: 40,
     height: 40,
-    resizeMode: 'contain'
+    resizeMode: 'contain',
+    zIndex:9
   },
   categoryContainer: {
     flex: 1,
