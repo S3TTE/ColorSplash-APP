@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, SafeAreaView } from 'react-native';
+import { View, Image, StyleSheet, TouchableOpacity, SafeAreaView, Text } from 'react-native';
 import { Link } from 'expo-router';
 
 const languages = [
@@ -9,15 +9,26 @@ const languages = [
   { id: 'es', title: 'Español' },
 ];
 
+const flagImages = {
+  en: require('../assets/app/flags/en.png'),
+  it: require('../assets/app/flags/it.png'),
+  de: require('../assets/app/flags/de.png'),
+  es: require('../assets/app/flags/es.png'),
+};
+
 export default function LanguageSelection() {
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.title}>Select Language / Seleziona la lingua / Sprache wählen / Seleccionar idioma</Text>
-      <View style={styles.languagesContainer}>
+      <View style={styles.flagsContainer}>
+        <Text style={styles.title}>Select Language / Seleziona la lingua / Sprache wählen / Seleccionar idioma</Text>
         {languages.map((lang) => (
           <Link key={lang.id} href={`/category/${lang.id}`} asChild>
-            <TouchableOpacity style={styles.languageButton}>
-              <Text style={styles.languageText}>{lang.title}</Text>
+            <TouchableOpacity style={styles.flagButton}>
+              <Image
+                source={flagImages[lang.id]}
+                style={styles.flagImage}
+                resizeMode="contain"
+              />
             </TouchableOpacity>
           </Link>
         ))}
@@ -29,7 +40,7 @@ export default function LanguageSelection() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f0f0f0',
+    backgroundColor: '#d9d4be',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -40,19 +51,27 @@ const styles = StyleSheet.create({
     marginBottom: 30,
     paddingHorizontal: 20,
   },
-  languagesContainer: {
-    width: '80%',
+  flagsContainer: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+    gap: 20,
+    padding: 20,
   },
-  languageButton: {
-    backgroundColor: '#0a7ea4',
-    padding: 15,
+  flagButton: {
     borderRadius: 10,
-    marginVertical: 10,
-    alignItems: 'center',
+    overflow: 'hidden',
+    elevation: 3,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
   },
-  languageText: {
-    color: 'white',
-    fontSize: 18,
-    fontWeight: 'bold',
+  flagImage: {
+    width: 120,
+    height: 80,
   },
 });
