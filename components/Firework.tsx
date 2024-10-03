@@ -56,7 +56,7 @@ const Fireworks: React.FC<FireworksProps> = ({
       id: getUniqueId(),
       x: new Animated.Value(fireworkX),
       y: new Animated.Value(fireworkY),
-      size: new Animated.Value(0),
+      size: new Animated.Value(10),
       color: Array.isArray(colors) ? colors[index % colors.length] : colors,
     };
   };
