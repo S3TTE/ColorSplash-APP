@@ -32,10 +32,8 @@ export default function CategoryPage() {
 
   const playSound = async (itemKey) => {
     try {
-      console.log("Attempting to play audio");
 
       if (sound) {
-        console.log("Unloading previous sound");
         await sound.unloadAsync();
       }
 
@@ -45,14 +43,11 @@ export default function CategoryPage() {
         return;
       }
 
-      console.log("Creating new sound:", audioFile);
       const { sound: newSound } = await Audio.Sound.createAsync(audioFile);
       setSound(newSound);
 
-      console.log("Playing sound");
       await newSound.playAsync();
 
-      console.log("Sound played successfully");
     } catch (error) {
       console.error("Error playing sound:", error);
     }
@@ -66,9 +61,7 @@ export default function CategoryPage() {
       : undefined;
   }, [sound]);
   const getImageForItem = (itemKey, color) => {
-    //console.log(itemKey,color)
     const colorItems = colorData[color];
-    //console.log(colorItems)
     if (colorItems) {
       const item = colorItems.find(i => i.key === itemKey);
       return item ? item.image : null;
@@ -81,7 +74,6 @@ export default function CategoryPage() {
     setShowFireworks(true);
     const image = getImageForItem(item.key, item.color);
     setEnlargedImage(image);
-    //console.log(id, item);
     playSound(item.key);
 
     Animated.parallel([
@@ -119,7 +111,6 @@ export default function CategoryPage() {
 
   const renderColorCategory = (color) => {
     const categoryData = translations[id].items.filter(item => item.color === color);
-    console.log(categoryData)
     const categoryName = translations[id].colors.find(c => c.key === color)?.title;
 
     // Sort the categoryData based on the id in colorData
