@@ -1,12 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { View, Image, TouchableOpacity, StyleSheet, Text, Dimensions, FlatList, ScrollView, SafeAreaView, Animated } from 'react-native';
+import { View, Image, TouchableOpacity, StyleSheet, Text, Dimensions, FlatList, ScrollView, SafeAreaView, Animated, StatusBar, Platform } from 'react-native';
 import { useLocalSearchParams, Link } from 'expo-router';
 import { Audio } from 'expo-av';
 import Fireworks from '../../components/Firework';
-import { translations, getTranslation, getAudioFile, getItemColor } from '../../constants/LanguageData';
+import { translations, getTranslation, getAudioFile } from '../../constants/LanguageData';
 import { colorData } from '../../constants/Colors';
 
 const { width: screenWidth, height: screenHeight } = Dimensions.get('window');
+const statusBarHeight = StatusBar.currentHeight || 0; // Will be 0 on iOS
 
 export default function CategoryPage() {
   const { id } = useLocalSearchParams();
@@ -122,7 +123,16 @@ export default function CategoryPage() {
 
     return (
       <View style={[styles.categoryContainer, { width: screenWidth }]} key={color}>
-        <Text style={styles.title}>{categoryName}</Text>
+        <View style={styles.headerContainer}>
+          <Link href="/" style={styles.backButton}>
+            <Image
+              source={require("../../assets/app/images/back.png")}
+              style={styles.backButtonImage}
+              resizeMode="contain"
+            />
+          </Link>
+          <Text style={styles.title}>{categoryName}</Text>
+        </View>
         <FlatList
           data={sortedCategoryData}
           renderItem={({ item }) => {
@@ -146,83 +156,97 @@ export default function CategoryPage() {
   };
 
   return (
-    <SafeAreaView style={styles.container}>
-      <Link href="/" style={styles.backButton}>
-        <Text style={styles.backButtonText}>{getTranslation(id, 'functionality.backToLanguageSelection')}</Text>
-      </Link>
-      <ScrollView
-        horizontal
-        pagingEnabled
-        showsHorizontalScrollIndicator={false}
-        onScroll={(event) => {
-          const offsetX = event.nativeEvent.contentOffset.x;
-          const page = Math.round(offsetX / screenWidth);
-          setCurrentPage(page);
-        }}
-        scrollEventThrottle={16}
-      >
-        {translations[id].colors.map(category => renderColorCategory(category.key))}
-      </ScrollView>
-      {enlargedImage && (
-        <Animated.View style={[styles.enlargedImageContainer, animatedStyles]}>
-          <Image source={enlargedImage} style={styles.enlargedImage} />
-        </Animated.View>
-      )}
-      <View style={styles.pagination}>
-        {translations[id].colors.map((category, index) => (
-          <View
-            key={index}
-            style={[
-              styles.paginationDot,
-              { backgroundColor: category.key },
-              currentPage === index && styles.paginationDotActive,
-            ]}
-          />
-        ))}
-      </View>
-      {selectedItem && (
-        <Animated.View style={[styles.enlargedImageContainer, animatedStyles]}>
-          <Image source={selectedItem} style={styles.enlargedImage} />
-        </Animated.View>
-      )}
-      {showFireworks && (
-        <View style={styles.fireworksContainer}>
-          <Fireworks
-            speed={3}
-            density={8}
-            colors={translations[id].colors.map(cat => cat.key)}
-            iterations={5}
-            height={screenHeight}
-            width={screenWidth}
-            zIndex={1001}
-            circular={true}
-          />
+    <SafeAreaView style={styles.safeArea}>
+      <View style={styles.container}>
+        
+        <ScrollView
+          horizontal
+          pagingEnabled
+          showsHorizontalScrollIndicator={false}
+          onScroll={(event) => {
+            const offsetX = event.nativeEvent.contentOffset.x;
+            const page = Math.round(offsetX / screenWidth);
+            setCurrentPage(page);
+          }}
+          scrollEventThrottle={16}
+        >
+          {translations[id].colors.map(category => renderColorCategory(category.key))}
+        </ScrollView>
+        {enlargedImage && (
+          <Animated.View style={[styles.enlargedImageContainer, animatedStyles]}>
+            <Image source={enlargedImage} style={styles.enlargedImage} />
+          </Animated.View>
+        )}
+        <View style={styles.pagination}>
+          {translations[id].colors.map((category, index) => (
+            <View
+              key={index}
+              style={[
+                styles.paginationDot,
+                { backgroundColor: category.key },
+                currentPage === index && styles.paginationDotActive,
+              ]}
+            />
+          ))}
         </View>
-      )}
+        {selectedItem && (
+          <Animated.View style={[styles.enlargedImageContainer, animatedStyles]}>
+            <Image source={selectedItem} style={styles.enlargedImage} />
+          </Animated.View>
+        )}
+        {showFireworks && (
+          <View style={styles.fireworksContainer}>
+            <Fireworks
+              speed={3}
+              density={8}
+              colors={translations[id].colors.map(cat => cat.key)}
+              iterations={5}
+              height={screenHeight}
+              width={screenWidth}
+              zIndex={1001}
+              circular={true}
+            />
+          </View>
+        )}
+      </View>
     </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
+  safeArea: {
+    flex: 1,
+    backgroundColor: '#d9d4be',
+  },
   container: {
     flex: 1,
     backgroundColor: '#d9d4be',
   },
-  backButton: {
-    padding: 10,
-    marginBottom: 10,
+  headerContainer: {
+    //position: 'absolute',
+    //top: Platform.OS === 'android' ? statusBarHeight + 10 : 10,
+    //left: 20,
+    //zIndex: 1000,
+    //display: 'flex',
+    flexDirection: 'row',
+    //alignItems: 'center'
   },
-  backButtonText: {
-    color: '#0a7ea4',
-    fontSize: 16,
+  backButtonImage: {
+    width: 40,
+    height: 40,
+    resizeMode: 'contain'
   },
   categoryContainer: {
     flex: 1,
     padding: 20,
+    paddingTop: 0, // Reduced top padding since we now have proper header spacing
+    width: screenWidth,
+    marginTop: Platform.OS === 'android' ? statusBarHeight : 0,
   },
   title: {
     fontSize: 24,
     fontWeight: 'bold',
+    marginTop: 20,
     marginBottom: 20,
     textAlign: 'center',
   },
@@ -231,7 +255,9 @@ const styles = StyleSheet.create({
   },
   itemContainer: {
     flex: 1,
-    margin: 10,
+    margin: 5,
+    marginBottom: -5,
+    marginTop: -3,
     alignItems: 'center',
     padding: 5,
   },
@@ -259,7 +285,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: undefined,
     resizeMode: 'contain',
-    aspectRatio:1,
+    aspectRatio: 1,
   },
   pagination: {
     flexDirection: 'row',
