@@ -7,13 +7,7 @@ const InlineAd = () => {
   const [isSDKInitialized, setIsSDKInitialized] = useState<boolean>(false);
 
   // Test banner IDs
-  const bannerUnitId = __DEV__ 
-    ? TestIds.BANNER
-    : Platform.select({
-        ios: 'ca-app-pub-REAL_ID_HERE',
-        android: 'ca-app-pub-REAL_ID_HERE',
-        default: TestIds.BANNER,
-      });
+  const bannerUnitId = __DEV__ ? TestIds.BANNER : 'ca-app-pub-7971887259461858/2462049443'
 
   useEffect(() => {
     const initializeSDK = async () => {

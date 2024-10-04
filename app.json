@@ -36,7 +36,12 @@
     "plugins": [
       "expo-router",
       "expo-asset",
-      "react-native-google-mobile-ads"
+      "react-native-google-mobile-ads",{
+        android: {
+          applicationId: "ca-app-pub-7971887259461858~6303622926",
+          delayAppMeasurementInit: true
+        }
+      }
     ],
     "experiments": {
       "typedRoutes": true
