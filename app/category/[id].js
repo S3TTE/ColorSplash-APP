@@ -3,6 +3,7 @@ import { View, Image, TouchableOpacity, StyleSheet, Text, Dimensions, FlatList, 
 import { useLocalSearchParams, Link } from 'expo-router';
 import { Audio } from 'expo-av';
 import Fireworks from '../../components/Firework';
+import { InlineAd } from '../../components/InlineAd'
 import { translations, getTranslation, getAudioFile } from '../../constants/LanguageData';
 import { colorData } from '../../constants/Colors';
 
@@ -131,7 +132,7 @@ export default function CategoryPage() {
               resizeMode="contain"
             />
           </Link>
-          <View style={{ marginLeft:-50, flex: 1, justifyContent: 'center' }}>
+          <View style={{ marginLeft: -50, flex: 1, justifyContent: 'center' }}>
             <Text style={styles.title}>{categoryName}</Text>
           </View>
         </View>
@@ -160,7 +161,9 @@ export default function CategoryPage() {
   return (
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.container}>
-
+        <View style={styles.bannerContainer}>
+          <InlineAd />
+        </View>
         <ScrollView
           horizontal
           pagingEnabled
@@ -216,6 +219,11 @@ export default function CategoryPage() {
 }
 
 const styles = StyleSheet.create({
+  bannerContainer: {
+    width: '100%',
+    alignItems: 'center',
+    marginVertical: 5,
+  },
   safeArea: {
     flex: 1,
     backgroundColor: '#d9d4be',
@@ -228,13 +236,13 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   backButton: {
-    zIndex:10
+    zIndex: 10
   },
   backButtonImage: {
     width: 40,
     height: 40,
     resizeMode: 'contain',
-    zIndex:9
+    zIndex: 9
   },
   categoryContainer: {
     flex: 1,

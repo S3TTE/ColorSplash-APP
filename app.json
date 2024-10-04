@@ -13,14 +13,20 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "config": {
+        "googleMobileAdsAppId": "ca-app-pub-xxxxxxxxxxxxxxxx~yyyyyyyyyy"
+      }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.s3tte.ColorSplash"
+      "package": "com.s3tte.ColorSplash",
+      "config": {
+        "googleMobileAdsAppId": "ca-app-pub-7971887259461858~6303622926"
+      }
     },
     "web": {
       "bundler": "metro",
@@ -29,7 +35,8 @@
     },
     "plugins": [
       "expo-router",
-      "expo-asset"
+      "expo-asset",
+      "react-native-google-mobile-ads"
     ],
     "experiments": {
       "typedRoutes": true
