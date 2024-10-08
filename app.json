@@ -2,7 +2,7 @@
   "expo": {
     "name": "Color-Splash",
     "slug": "Color-Splash",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "myapp",
@@ -20,7 +20,8 @@
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.s3tte.ColorSplash"
+      "package": "com.s3tte.ColorSplash",
+      "versionCode": 3 // Incrementa questo valore
     },
     "web": {
       "bundler": "metro",
