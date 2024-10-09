@@ -20,8 +20,7 @@
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.s3tte.ColorSplash",
-      "versionCode": 3 // Incrementa questo valore
+      "package": "com.s3tte.ColorSplash"
     },
     "web": {
       "bundler": "metro",

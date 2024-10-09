@@ -15,6 +15,7 @@
       /*"android": {
         "buildType": "apk"
       }*/
+      "autoIncrement": true
     }
   },
   "submit": {
